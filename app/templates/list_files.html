@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>List of Files</h1>
+<hr>
+
+<ul>
+    {% for file in files %}
+        {% if file.split('/')[-1].endswith('.jpg') or file.split('/')[-1].endswith('.jpeg') %}
+            <li><img src="{{ url_for('static', filename = 'uploads/' + file.split('/')[-1]) }}"></img></li>
+        {% else %}
+            <li>{{ file.split('/')[-1] }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock %}
